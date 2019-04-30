@@ -1,0 +1,46 @@
+label {
+  display: inline-block;
+  width: 250px;
+  padding: 6px 0 6px 0;
+}
+
+.prediction-canvas {
+  width: 100px;
+}
+
+.pred {
+  font-size: 20px;
+  line-height: 25px;
+  width: 100px;
+}
+
+.pred-correct {
+  background-color: #00cf00;
+}
+
+.pred-incorrect {
+  background-color: red;
+}
+
+.pred-container {
+  display: inline-block;
+  width: 100px;
+  margin: 10px;
+}
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	display: none;
+}

@@ -1,0 +1,90 @@
+<!--
+ * @license
+ * Copyright 2019 AI Lab - Telkom University. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+-->
+
+<html>
+<head><link rel="stylesheet" type="text/css" href="modul4.css"></head>
+<body>
+	<input type="file" id="file-select" style="display: none" accept="image/x-png,image/gif,image/jpeg"/>
+	<div class="container">
+		<div class="card-body">
+			<div class="float-right">
+				<img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png" class="navbar-ai" alt="ai-lab">
+			</div>
+			<h1>Style Transfer using TensorFlow.js</h1>
+		</div>
+		
+		<!-- Save/Load Model -->
+		<div class="card-body">			
+			<h3>Load Model</h3>		
+			<div class="row">					
+				<div class="form-group col">	
+					<input id='input-style' class="form-control form-group" type="text" value="http://localhost:8080/style_model/model.json">	
+					<button type="button" class="btn btn-primary form-group" id="load-style-btn">Load Style Model</button>
+					<h4><div class="badge badge-success" id="loaded-style" style="display:none;">Style Model Loaded</div></h4>
+				</div>
+				<div class="form-group col">	
+					<input id='input-transformer' class="form-control form-group" type="text" value="http://localhost:8080/transformer_model/model.json">	
+					<button type="button" class="btn btn-primary form-group" id="load-transformer-btn">Load Transformer Model</button>
+					<h4><div class="badge badge-success" id="loaded-transformer" style="display:none;">Transformer Model Loaded</div></h4>
+				</div>
+			</div>
+		</div><hr>
+		
+		<div class="card-body row">
+			<div class="col border-right">
+				<h3>Content Image</h3>
+				<img id="content-img" class="centered form-group" crossorigin="anonymous" height=200></img>
+			</div>
+			<div class="col">
+				<h3>Style Image</h3>
+				<img id="style-img" class="centered form-group" crossorigin="anonymous" height=150></img>
+			</div>
+		</div>
+		<div class="card-body row">
+			<div class="col border-right">
+				<label for="content-slider">Content image size</label>
+				<input type="range" min="100" max="300" value="200" class="custom-range centered" id="content-slider" disabled><br>
+				<select id="content-select" class="centered custom-select">
+					<option value="" selected="selected" disabled>Select Content</option>
+					<option value="file">Select from file</option>
+				</select>
+			</div>
+			<div class="col">
+				<label for="style-slider">Style image size</label>				
+				<input type="range" min="100" max="200" value="150" class="custom-range centered" id="style-slider" disabled><br>
+				<select id="style-select" class="centered custom-select form-group">
+					<option value="" disabled selected="selected">Select Style</option>
+				</select>
+				<button type="button" id="random-btn" class="btn btn-primary btn-block">Random image from wikiart.org</button>
+				<input id="style-check" type="checkbox" class="form-group"/> 
+				<label for="style-check">Force image to square</label>
+			</div>
+		</div><hr>
+		
+		<div class="card-body col-7 centered">
+			<canvas id="stylized-img" class="centered"></canvas><br>
+            <label for="stylized-slider">Stylization strength</label>
+            <input type="range" min="0" max="100" value="100" class="custom-range centered" id="stylized-slider"><br>
+			<button type="button"  class="btn btn-primary btn-block" id="stylize-btn" disabled>Stylize Image</button>
+		</div>
+		
+	</div><br><br>
+	<script src="./styletransfer.js"></script>
+</body>
+</html>
+
+<!-- @author ANDITYA ARIFIANTO, AI LAB - 2019 -->

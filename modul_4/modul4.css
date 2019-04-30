@@ -1,0 +1,93 @@
+.navbar-ai {
+    position: relative;
+    width: 180;
+    right: 0px;
+	bottom: 10px;
+}
+
+/* CSS LABEL */
+.positive {
+	font-weight: bold;
+	color: red;
+}
+
+.slightly {
+	font-weight: bold;
+	color: #FF50A0;
+}
+
+.detect {
+  position: absolute;
+  border: 2px dashed;
+}
+
+.centered {
+  margin: auto;    
+  display: block;
+}
+
+.text, .label {
+	padding: 10px;
+}
+
+/*CSS BUTTON FILE*/
+.btn-file {
+	position: relative;
+	overflow: hidden;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	outline: none;
+	background: white;
+	display: none;
+}
+
+/* CSS WEBCAM */
+.webcam-box-outer {
+	background: black;
+	border: 1px solid #585858;
+	display: inline-block;
+}
+
+.webcam-handsign-inner {
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	width:100px;
+	height:100px;
+}
+
+.webcam-posenet-inner {
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	width:600px;
+	height:450;
+}
+
+#webcam-yolo-inner, #webcam-yolo {
+	width:  600px;
+	z-index: -100;
+
+	@media screen and (max-width:  600px) {
+		width:  400px;
+	}
+}
+
+#webcam-yolo-inner {
+	position: relative;
+	margin: 0 auto;
+}
+
+#webcam, #webcam-yolo {
+	transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+}

@@ -1,0 +1,60 @@
+<!--
+ * @license
+ * Copyright 2019 AI Lab - Telkom University. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the "License")
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * =============================================================================
+-->
+
+<html>
+<head><link rel="stylesheet" type="text/css" href="modul4.css"></head>
+<body>
+	<div class="container">
+		<div class="card-body">
+			<div class="float-right">
+				<img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png" class="navbar-ai" alt="ai-lab">
+			</div>
+			<h1>Toxic Sentence Classification using TensorFlow.js</h1>
+		</div>
+
+		<!-- Save/Load Model -->
+		<div class="card-body row">			
+			<div class="col-4 border-right">
+				<h3>Download Model</h3>
+				<button type="button" class="btn btn-primary form-group" id="load-model-btn">Download Model</button>
+				<button type="button" class="btn btn-primary form-group" id="sample-btn" style="display:none;">Show Sample</button>
+				<h4><div class="badge badge-warning" id="loaded" style="display:none;">Downloading... Please Wait</div></h4>
+			</div>
+			<div class="col">
+				<h3>Test Model</h3>			
+				<p>Enter text below and click 'Classify' to add it to the table.</p>			
+				<div class="form-group">	
+					<input id='input-text' class="form-control" type="text" placeholder="i.e. 'you suck'">	
+				</div>
+				<div>
+					<button type="button" class="btn btn-primary form-group" id="classify-btn">Classify Text</button>
+					<h4><div class="badge badge-warning" id="classify" style="display:none;">Classifying...</div></h4>
+				</div>			
+			</div>
+		</div><hr>
+		
+		<div class="card-body table-responsiv">
+			<h3>Prediction Results</h3>	
+			<table class="table" id="table-results"></table>	
+		</div><hr>
+		
+	</div><br><br>
+	<script src="./toxicity.js"></script>
+</body>
+</html>
+
+<!-- @author ANDITYA ARIFIANTO, AI LAB - 2019 -->
