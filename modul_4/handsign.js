@@ -25,104 +25,104 @@ require('babel-polyfill')
 var model
 const webcam = new Webcam(document.getElementById('webcam'))
 
-$('#load-model-btn').click(async() => {	
-	var modelPath = $('#input-model').val()
-	try{
-		$('#load-model-btn').prop('disabled', true)	
-		$('#load-model-btn').text('Loading Model...')	
-		model = await tf.loadLayersModel(modelPath)
-		
-		$('#loaded').show()
-		setTimeout(function() {
-			$('#loaded').fadeOut()
-		}, 1000)
-		
-		$('#load-model-btn').text('Model Loaded')	
-		$('#init-webcam-btn').prop('disabled', false)		
-	} catch (e) {
-		console.log(e)
-		alert('cannot load the specified model')
-		$('#load-model-btn').prop('disabled', false)	
-		$('#load-model-btn').text('Load Model')	
-	}
+$('#load-model-btn').click(async() => {    
+    var modelPath = $('#input-model').val()
+    try{
+        $('#load-model-btn').prop('disabled', true)    
+        $('#load-model-btn').text('Loading Model...')    
+        model = await tf.loadLayersModel(modelPath)
+        
+        $('#loaded').show()
+        setTimeout(function() {
+            $('#loaded').fadeOut()
+        }, 1000)
+        
+        $('#load-model-btn').text('Model Loaded')    
+        $('#init-webcam-btn').prop('disabled', false)        
+    } catch (e) {
+        console.log(e)
+        alert('cannot load the specified model')
+        $('#load-model-btn').prop('disabled', false)    
+        $('#load-model-btn').text('Load Model')    
+    }
 })
 
-$('#upload-btn').click(async() => {	
-	$('#img-upload').click()
+$('#upload-btn').click(async() => {    
+    $('#img-upload').click()
 })
 
 var imgTensor
 $('#img-upload').change(async(evt) => {
-	var canvas = $('#predict-canvas')[0]
-	var context = canvas.getContext("2d") 
-	var img = new Image()
-	
-	var file = evt.target.files[0]
-	if(file.type.match('image.*')) {
-		var reader = new FileReader()
-		reader.readAsDataURL(file)
-		reader.onload = function(evt){
-			if( evt.target.readyState == FileReader.DONE) {
-				img.src = evt.target.result
-				img.onload = () => {					
-					context.clearRect(0, 0, canvas.width, canvas.height)
-					context.drawImage(img, 0, 0)
-					imgTensor = tf.browser.fromPixels(img)
-				}
-			}
-		}		
-		$('#predict-btn').prop('disabled', false)
-		$('#prediction').text( 'Predicted: ')	
-	} else {
-		alert("not an image")
-	}
+    var canvas = $('#predict-canvas')[0]
+    var context = canvas.getContext("2d") 
+    var img = new Image()
+    
+    var file = evt.target.files[0]
+    if(file.type.match('image.*')) {
+        var reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onload = function(evt){
+            if( evt.target.readyState == FileReader.DONE) {
+                img.src = evt.target.result
+                img.onload = () => {                    
+                    context.clearRect(0, 0, canvas.width, canvas.height)
+                    context.drawImage(img, 0, 0)
+                    imgTensor = tf.browser.fromPixels(img)
+                }
+            }
+        }        
+        $('#predict-btn').prop('disabled', false)
+        $('#prediction').text( 'Predicted: ')    
+    } else {
+        alert("not an image")
+    }
 })
 
 $('#predict-btn').click(async() => {
-	try{
-		$('#predict-btn').prop('disabled', true)		
-		const img = imgTensor.div(tf.scalar(255))
+    try{
+        $('#predict-btn').prop('disabled', true)        
+        const img = imgTensor.div(tf.scalar(255))
 
-		var x_data = tf.cast(img.reshape([1, 64, 64, 3]), 'float32')
-		var y_pred = await model.predict(x_data)
-		var predictions = Array.from(y_pred.argMax(1).dataSync())
+        var x_data = tf.cast(img.reshape([1, 64, 64, 3]), 'float32')
+        var y_pred = await model.predict(x_data)
+        var predictions = Array.from(y_pred.argMax(1).dataSync())
 
-		$('#prediction').text( 'Predicted: '+ predictions)	
-	} catch (e) {
-		console.log(e)
-		alert('failed to predict image')
-	}
-	
+        $('#prediction').text( 'Predicted: '+ predictions)    
+    } catch (e) {
+        console.log(e)
+        alert('failed to predict image')
+    }
+    
 })
 
 async function predictWebcam(){
-	var preview = $('#test-canvas')[0]
-	while (true) {
-		const predictedClass = tf.tidy(() => {
-			// Capture the frame from the webcam.
-			var img = webcam.capture(64,64)
-			var preprocessed = img.toFloat().div(tf.scalar(255))
-			
-			var y_pred = model.predict(preprocessed)
-			var predictions = y_pred.argMax(1).dataSync()
-			
-			return predictions
-		})
-		$('#prediction-webcam').text( 'Predicted: '+ predictedClass)	
-		await tf.nextFrame()
-	}
+    var preview = $('#test-canvas')[0]
+    while (true) {
+        const predictedClass = tf.tidy(() => {
+            // Capture the frame from the webcam.
+            var img = webcam.capture(64,64)
+            var preprocessed = img.toFloat().div(tf.scalar(255))
+            
+            var y_pred = model.predict(preprocessed)
+            var predictions = y_pred.argMax(1).dataSync()
+            
+            return predictions
+        })
+        $('#prediction-webcam').text( 'Predicted: '+ predictedClass)    
+        await tf.nextFrame()
+    }
 }
 
 $('#init-webcam-btn').click(async() => {
-	try {
-		await webcam.setup()
-		$('#init-webcam').show()
-		$('#no-webcam').hide()
-		predictWebcam()
-	} catch (e) {
-		console.log(e)
-		alert('cannot initiate webcam')
-	}
+    try {
+        await webcam.setup()
+        $('#init-webcam').show()
+        $('#no-webcam').hide()
+        predictWebcam()
+    } catch (e) {
+        console.log(e)
+        alert('cannot initiate webcam')
+    }
 })
 
 

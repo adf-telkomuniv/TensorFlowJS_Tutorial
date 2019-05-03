@@ -1,3 +1,10 @@
+.navbar-ai {
+    position: relative;
+    width: 180;
+    right: 0px;
+    bottom: 10px;
+}
+
 label {
   display: inline-block;
   width: 250px;
@@ -29,18 +36,18 @@ label {
 }
 
 .btn-file {
-	position: relative;
-	overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn-file input[type=file] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	text-align: right;
-	filter: alpha(opacity=0);
-	opacity: 0;
-	outline: none;
-	background: white;
-	display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    display: none;
 }

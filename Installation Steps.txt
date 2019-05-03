@@ -1,0 +1,15 @@
+    
+npm init -y
+
+npm install bootstrap
+npm install @tensorflow/tfjs
+npm install @tensorflow/tfjs-vis
+npm install chart.js
+npm install jquery
+
+npm install -g http-server
+npm install -g parcel-bundler
+
+npm install tfjs-tiny-yolov3
+npm install @tensorflow-models/toxicity
+npm install @tensorflow-models/posenet    

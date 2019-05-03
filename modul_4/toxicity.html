@@ -16,45 +16,46 @@
 -->
 
 <html>
-<head><link rel="stylesheet" type="text/css" href="modul4.css"></head>
-<body>
-	<div class="container">
-		<div class="card-body">
-			<div class="float-right">
-				<img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png" class="navbar-ai" alt="ai-lab">
-			</div>
-			<h1>Toxic Sentence Classification using TensorFlow.js</h1>
-		</div>
+    <head><link rel="stylesheet" type="text/css" href="modul4.css"></head>
+    <body>
+        <div class="container">
+            <div class="card-body">
+                <h1>
+                    Toxic Sentence Classification using TensorFlow.js
+                    <img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png"
+                         class="navbar-ai" />
+                </h1>
+            </div>
 
-		<!-- Save/Load Model -->
-		<div class="card-body row">			
-			<div class="col-4 border-right">
-				<h3>Download Model</h3>
-				<button type="button" class="btn btn-primary form-group" id="load-model-btn">Download Model</button>
-				<button type="button" class="btn btn-primary form-group" id="sample-btn" style="display:none;">Show Sample</button>
-				<h4><div class="badge badge-warning" id="loaded" style="display:none;">Downloading... Please Wait</div></h4>
-			</div>
-			<div class="col">
-				<h3>Test Model</h3>			
-				<p>Enter text below and click 'Classify' to add it to the table.</p>			
-				<div class="form-group">	
-					<input id='input-text' class="form-control" type="text" placeholder="i.e. 'you suck'">	
-				</div>
-				<div>
-					<button type="button" class="btn btn-primary form-group" id="classify-btn">Classify Text</button>
-					<h4><div class="badge badge-warning" id="classify" style="display:none;">Classifying...</div></h4>
-				</div>			
-			</div>
-		</div><hr>
-		
-		<div class="card-body table-responsiv">
-			<h3>Prediction Results</h3>	
-			<table class="table" id="table-results"></table>	
-		</div><hr>
-		
-	</div><br><br>
-	<script src="./toxicity.js"></script>
-</body>
+            <!-- Save/Load Model -->
+            <div class="card-body row">            
+                <div class="col-4 border-right">
+                    <h3>Download Model</h3>
+                    <button type="button" class="btn btn-primary form-group" id="load-model-btn">Download Model</button>
+                    <button type="button" class="btn btn-primary form-group" id="sample-btn" style="display:none;">Show Sample</button>
+                    <h4><div class="badge badge-warning" id="loaded" style="display:none;">Downloading... Please Wait</div></h4>
+                </div>
+                <div class="col">
+                    <h3>Test Model</h3>            
+                    <p>Enter text below and click 'Classify' to add it to the table.</p>            
+                    <div class="form-group">    
+                        <input id='input-text' class="form-control" type="text" placeholder="i.e. 'you suck'">    
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary form-group" id="classify-btn">Classify Text</button>
+                        <h4><div class="badge badge-warning" id="classify" style="display:none;">Classifying...</div></h4>
+                    </div>            
+                </div>
+            </div><hr>
+            
+            <div class="card-body table-responsiv">
+                <h3>Prediction Results</h3>    
+                <table class="table" id="table-results"></table>    
+            </div><hr>
+            
+        </div><br><br>
+        <script src="./toxicity.js"></script>
+    </body>
 </html>
 
 <!-- @author ANDITYA ARIFIANTO, AI LAB - 2019 -->

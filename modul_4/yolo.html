@@ -16,56 +16,57 @@
 -->
 
 <html>
-<head><link rel="stylesheet" type="text/css" href="modul4.css"></head>
-<body>
-	<div class="container">
-		<div class="card-body">
-			<div class="float-right">
-				<img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png" class="navbar-ai" alt="ai-lab">
-			</div>
-			<h1>YOLO: Real-Time Object Detection using TensorFlow.js</h1>
-		</div>
-		
-		<!-- Save/Load Model -->
-		<div class="card-body row">	
-			<div class="col border-right">
-				<h3>Download Model</h3>
-				<button type="button" class="btn btn-primary form-group" id="load-model-btn">Download Model</button>
-				<h4><div class="badge badge-success" id="loaded" style="display:none;">Downloading... Please Wait</div></h4>
-			</div>
-			<div class="col">			
-				<h3>YOLO Detection Webcam</h3>
-				<div class="form-group">
-					<button type="button" class="btn btn-primary" id="init-webcam-btn">Initialize Webcam</button>
-				</div>	
-				<button type="button" class="btn btn-primary" id="start-yolo-btn" style="display:none;" disabled>Start Detection</button>
-			</div>
-		</div><hr>
-		</div>
-		<div class="container-fluid">
-		<div class="row" style="text-align:center">
-			<div class="col" id="labels1">
-			</div>
-			<div class="col">
-				<div id="no-webcam">
-					No webcam found. <br/>
-					To use this demo, use a device with a webcam.
-				</div>		
-				<div id="webcam-yolo-inner">
-					<div id="output"></div>
-					<div><video autoplay playsinline muted id="webcam-yolo" width="400" height="400"></video></div>
-				</div>
-			</div>
-			<div class="col" id="labels2">
-			</div>
-		</div><hr>		
-		<div class="card-body"  style="text-align:center">	
-			<h4><div class="badge badge-success" id="labels"></div></h4>
-		</div><hr>
-		
-	</div><br><br>
-	<script src="./yolo.js"></script>
-</body>
+    <head><link rel="stylesheet" type="text/css" href="modul4.css"></head>
+    <body>
+        <div class="container">
+            <div class="card-body">
+                <h1>
+                    YOLO: Real-Time Object Detection using TensorFlow.js
+                    <img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png"
+                         class="navbar-ai" />
+                </h1>
+            </div>
+            
+            <!-- Save/Load Model -->
+            <div class="card-body row">    
+                <div class="col border-right">
+                    <h3>Download Model</h3>
+                    <button type="button" class="btn btn-primary form-group" id="load-model-btn">Download Model</button>
+                    <h4><div class="badge badge-success" id="loaded" style="display:none;">Downloading... Please Wait</div></h4>
+                </div>
+                <div class="col">            
+                    <h3>YOLO Detection Webcam</h3>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" id="init-webcam-btn">Initialize Webcam</button>
+                    </div>    
+                    <button type="button" class="btn btn-primary" id="start-yolo-btn" style="display:none;" disabled>Start Detection</button>
+                </div>
+            </div><hr>
+            </div>
+            <div class="container-fluid">
+            <div class="row" style="text-align:center">
+                <div class="col" id="labels1">
+                </div>
+                <div class="col">
+                    <div id="no-webcam">
+                        No webcam found. <br/>
+                        To use this demo, use a device with a webcam.
+                    </div>        
+                    <div id="webcam-yolo-inner">
+                        <div id="output"></div>
+                        <div><video autoplay playsinline muted id="webcam-yolo" width="400" height="400"></video></div>
+                    </div>
+                </div>
+                <div class="col" id="labels2">
+                </div>
+            </div><hr>        
+            <div class="card-body"  style="text-align:center">    
+                <h4><div class="badge badge-success" id="labels"></div></h4>
+            </div><hr>
+            
+        </div><br><br>
+        <script src="./yolo.js"></script>
+    </body>
 </html>
 
 <!-- @author ANDITYA ARIFIANTO, AI LAB - 2019 -->

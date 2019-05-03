@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <!--
  * @license
  * Copyright 2019 AI Lab - Telkom University. All Rights Reserved.
@@ -17,149 +16,150 @@
 -->
 
 <html>
-<head><link rel="stylesheet" type="text/css" href="mnist.css"></head>
-<body>
-	<div class="container">
-		<div class="card-body">
-			<div class="float-right">
-				<img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png" class="navbar-ai" alt="ai-lab">
-			</div>
-			<h1>MNIST Classifier using TensorFlow.js</h1><hr>
-		</div>
-		
-		<!-- Load Dataset -->
-		<div class="card-body" >	
-			<h3>MNIST Dataset</h3>
-			<button type="button" class="btn btn-primary form-group" id="load-data-btn">Load Data</button>	
-			<h4><div id="loading-data" class="badge badge-warning"/></h4>
-			<h4>Test Data Example</h4>
-			<div id="mnist-preview"></div>
-		</div><hr>
-		
-		<!-- Initialize Model -->
-		<div class="card-body ">
-			<h3>Model Architecture</h3>
-			<div class="form-group" >	
-				<textarea class="form-control" rows="11" id="model">model = tf.sequential(); </textarea>
-			</div>
-			<div class="row form-group" >	
-				<div class="col">
-					<label class="radio-inline"><input type="radio" name="optmodel" value='ANN'> ANN</label>
-					<label class="radio-inline"><input type="radio" name="optmodel" value='CNN'> CNN</label>
-				</div>
-				<div class="col">
-					<button type="button" class="float-right btn btn-primary" id="init-btn">Initialize Model</button>	
-				</div>
-			</div><hr>
-			<h3>Model Summary</h3>
-			<div id="summary"></div>
-		</div><hr>
-				
-		<!-- Train Model -->
-		<div class="card-body">
-			<div class="row">
-				<div class="col border-right">	
-					<h3>Train Model</h3>
-					<div class="form-group">
-						<label>Max Epoch:</label>
-						<input id='epoch' class="form-control"
-							type="text" value="1">
-						<label>Batch Size:</label>
-						<input id='batch' class="form-control"
-							type="text" value="100">
-					</div>			
-					<!--<div class="form-group">-->
-						<button type="button" class="btn btn-primary" id="train-btn" disabled>Train Model</button>
-					<!--</div>			-->
-				</div>
-				<div class="col">
-					<h3>Training Progress</h3>
-					<div id="loss-graph"></div>
-					<div class="caption">Loss</div><hr>	
-					<h4><div id="training" class="badge badge-success"/></h4>
-					<h4><div id="num-iter" class="badge"/></h4>				
-				</div>
-				
-				<div class="col">	
-					<h3><br></h3>
-					<div id="acc-graph"></div>
-					<div class="caption">Accuracy</div><hr>	
-					<h4><div id="train-iter" class="badge badge-warning"/></h4>
-					<h4><div id="train-acc" class="badge badge-info"/></h4>
-				</div>
+    <head><link rel="stylesheet" type="text/css" href="mnist.css"></head>
+    <body>
+        <div class="container">
+            <div class="card-body">
+                <h1>
+                    MNIST Classifier using TensorFlow.js
+                    <img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png"
+                         class="navbar-ai" />
+                </h1>
+            </div>
+            
+            <!-- Load Dataset -->
+            <div class="card-body" >    
+                <h3>MNIST Dataset</h3>
+                <button type="button" class="btn btn-primary form-group" id="load-data-btn">Load Data</button>    
+                <h4><div id="loading-data" class="badge badge-warning"/></h4>
+                <h4>Test Data Example</h4>
+                <div id="mnist-preview"></div>
+            </div><hr>
+            
+            <!-- Initialize Model -->
+            <div class="card-body ">
+                <h3>Model Architecture</h3>
+                <div class="form-group" >    
+                    <textarea class="form-control" rows="11" id="model">model = tf.sequential(); </textarea>
+                </div>
+                <div class="row form-group" >    
+                    <div class="col">
+                        <label class="radio-inline"><input type="radio" name="optmodel" value='ANN'> ANN</label>
+                        <label class="radio-inline"><input type="radio" name="optmodel" value='CNN'> CNN</label>
+                    </div>
+                    <div class="col">
+                        <button type="button" class="float-right btn btn-primary" id="init-btn">Initialize Model</button>    
+                    </div>
+                </div><hr>
+                <h3>Model Summary</h3>
+                <div id="summary"></div>
+            </div><hr>
+                    
+            <!-- Train Model -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col border-right">    
+                        <h3>Train Model</h3>
+                        <div class="form-group">
+                            <label>Max Epoch:</label>
+                            <input id='epoch' class="form-control"
+                                type="text" value="1">
+                            <label>Batch Size:</label>
+                            <input id='batch' class="form-control"
+                                type="text" value="100">
+                        </div>            
+                        <!--<div class="form-group">-->
+                            <button type="button" class="btn btn-primary" id="train-btn" disabled>Train Model</button>
+                        <!--</div>            -->
+                    </div>
+                    <div class="col">
+                        <h3>Training Progress</h3>
+                        <div id="loss-graph"></div>
+                        <div class="caption">Loss</div><hr>    
+                        <h4><div id="training" class="badge badge-success"/></h4>
+                        <h4><div id="num-iter" class="badge"/></h4>                
+                    </div>
+                    
+                    <div class="col">    
+                        <h3><br></h3>
+                        <div id="acc-graph"></div>
+                        <div class="caption">Accuracy</div><hr>    
+                        <h4><div id="train-iter" class="badge badge-warning"/></h4>
+                        <h4><div id="train-acc" class="badge badge-info"/></h4>
+                    </div>
 
-			</div>
-		</div><hr>
-		
-		<!-- Evaluate Model -->
-		<div class="card-body">
-			<h3>Evaluate Model</h3>
-			<div class="form-group">
-				<button type="button" class="btn btn-primary" id="eval-btn" disabled>Evaluate Model</button>
-			</div>					
-			<div class="row">
-				<div class="col">
-					<h3>Class Accuracy</h3>
-					<div class="form-group" id="class-accuracy"></div>	
-					<h4><div id="test-acc" class="badge badge-success"/></h4>	
-				</div>
-				<div class="col">
-					<h3>Confusion Matrix</h3>
-					<div class="form-group" id="confusion-matrix"></div>		
-				</div>
-			</div><hr>
-			<h3>Prediction Example</h3>
-			<button type="button" class="btn btn-primary" id="show-example-btn" disabled>Show Prediction</button>
-			<div id="example-preview"></div>
-		</div><hr>
-		
-		<!-- Save/Load Model -->
-		<div class="card-body">			
-			<div class="row">
-				<div class="col border-right">
-					<h3>Save Model</h3>
-					<button type="button" class="btn btn-primary form-group" id="save-btn" >Save Model</button>
-					<h4><div class="badge badge-success" id="saved" style="display:none;">Model Saved</div></h4>
-				</div>
-				<div class="col">
-					<h3>Load Model</h3>
-					<label class="btn btn-primary btn-file">
-						Browse JSON <input type="file" id="json-upload">
-					</label>
-					<label class="btn btn-primary btn-file">
-						Browse Weights <input type="file" id="weights-upload">
-					</label>
-					<button type="button" class="btn btn-primary form-group" id="load-model-btn">Load Model</button>
-					<h4><div class="badge badge-success" id="loaded" style="display:none;">Model Loaded</div></h4>
-				</div>
-			</div>
-		</div><hr>
-		
-		<!-- Test Model -->
-		<div class="card-body">
-			<h3>Draw New Image</h3>	
-			<div class="row  form-group">
-				<div class="col-2 offset-0 form-group">
-					<canvas id="predict-canvas" width="140" height="140" style="border:1px solid #000000;" ></canvas>
-				</div>
-				<div class="col-2" style="text-align:center">
-					<div class="form-group">
-						preview <br><canvas id="preview-canvas" width="28" height="28" style="border:1px solid #000000;"></canvas>
-					</div>
-					<h4><div class="badge badge-success" id="prediction"/></h4>
-				</div>
-				<div class="col-5">
-					Prediction Class Histogram
-					<div id="predict-graph"></div>
-				</div>
-			</div>
-			<button type="button" class="btn btn-primary" id="clear-btn">Clear</button>
-			<button type="button" class="btn btn-primary" id="predict-btn" disabled>Predict</button>
-		</div><hr>
-		
-	</div><br><br>
-	<script src="./index3.js"></script>
-</body>
+                </div>
+            </div><hr>
+            
+            <!-- Evaluate Model -->
+            <div class="card-body">
+                <h3>Evaluate Model</h3>
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" id="eval-btn" disabled>Evaluate Model</button>
+                </div>                    
+                <div class="row">
+                    <div class="col">
+                        <h3>Class Accuracy</h3>
+                        <div class="form-group" id="class-accuracy"></div>    
+                        <h4><div id="test-acc" class="badge badge-success"/></h4>    
+                    </div>
+                    <div class="col">
+                        <h3>Confusion Matrix</h3>
+                        <div class="form-group" id="confusion-matrix"></div>        
+                    </div>
+                </div><hr>
+                <h3>Prediction Example</h3>
+                <button type="button" class="btn btn-primary" id="show-example-btn" disabled>Show Prediction</button>
+                <div id="example-preview"></div>
+            </div><hr>
+            
+            <!-- Save/Load Model -->
+            <div class="card-body">            
+                <div class="row">
+                    <div class="col border-right">
+                        <h3>Save Model</h3>
+                        <button type="button" class="btn btn-primary form-group" id="save-btn" >Save Model</button>
+                        <h4><div class="badge badge-success" id="saved" style="display:none;">Model Saved</div></h4>
+                    </div>
+                    <div class="col">
+                        <h3>Load Model</h3>
+                        <label class="btn btn-primary btn-file">
+                            Browse JSON <input type="file" id="json-upload">
+                        </label>
+                        <label class="btn btn-primary btn-file">
+                            Browse Weights <input type="file" id="weights-upload">
+                        </label>
+                        <button type="button" class="btn btn-primary form-group" id="load-model-btn">Load Model</button>
+                        <h4><div class="badge badge-success" id="loaded" style="display:none;">Model Loaded</div></h4>
+                    </div>
+                </div>
+            </div><hr>
+            
+            <!-- Test Model -->
+            <div class="card-body">
+                <h3>Draw New Image</h3>    
+                <div class="row  form-group">
+                    <div class="col-2 offset-0 form-group">
+                        <canvas id="predict-canvas" width="140" height="140" style="border:1px solid #000000;" ></canvas>
+                    </div>
+                    <div class="col-2" style="text-align:center">
+                        <div class="form-group">
+                            preview <br><canvas id="preview-canvas" width="28" height="28" style="border:1px solid #000000;"></canvas>
+                        </div>
+                        <h4><div class="badge badge-success" id="prediction"/></h4>
+                    </div>
+                    <div class="col-5">
+                        Prediction Class Histogram
+                        <div id="predict-graph"></div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" id="clear-btn">Clear</button>
+                <button type="button" class="btn btn-primary" id="predict-btn" disabled>Predict</button>
+            </div><hr>
+            
+        </div><br><br>
+        <script src="./index3.js"></script>
+    </body>
 </html>
 
 <!-- @author ANDITYA ARIFIANTO, AI LAB - 2019 -->

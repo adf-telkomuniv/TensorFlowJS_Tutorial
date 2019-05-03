@@ -13,22 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * =============================================================================
- */ 
- 
-import * as tf from '@tensorflow/tfjs'
-import 'bootstrap/dist/css/bootstrap.css'
+ */
 
+import 'bootstrap/dist/css/bootstrap.css'
+import $ from 'jquery'
+import * as tf from '@tensorflow/tfjs'
 import * as tfvis from '@tensorflow/tfjs-vis'
 import Chart from 'chart.js'
-import $ from 'jquery'
 
 
 //PART 1
-const arr_x = [-1, 0, 1, 2, 3, 4]
-const arr_y = [-3, -1, 1, 3, 5, 7]
+const arr_x = [-1, -2,  0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 6]
+const arr_y = [-1, -2, -1, 1, 1, 0, 2, 3, 1, 3, 2, 4, 3, 6, 5]
 
-const x = tf.tensor2d(arr_x, [6, 1])
-const y = tf.tensor2d(arr_y, [6, 1])
+const x = tf.tensor2d(arr_x, [15, 1])
+const y = tf.tensor2d(arr_y, [15, 1])
 
 //VISUALISASI
 let zip = (arr1, arr2) => arr1.map((x, i) => { return {'x':x, 'y':arr2[i]}})
@@ -53,14 +52,12 @@ var scatterChart = new Chart(ctx, {
         datasets: [{
             data: data_train,
             label: label_train,
-			backgroundColor: 'blue'}]
+            backgroundColor: 'blue'}]
     },
-	options: {
-		responsive: false
-	}
+    options: {
+        responsive: false
+    }
 })
-
-$('#output').text('Hello World') 
 
 
 // @author ANDITYA ARIFIANTO

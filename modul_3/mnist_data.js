@@ -27,16 +27,16 @@ const N_DATA  = 65000
 const MNIST_IMAGES_SPRITE_PATH =
     'https://storage.googleapis.com/learnjs-data/model-builder/mnist_images.png'
 const MNIST_LABELS_PATH =
-	'https://storage.googleapis.com/learnjs-data/model-builder/mnist_labels_uint8'
-	
+    'https://storage.googleapis.com/learnjs-data/model-builder/mnist_labels_uint8'
+    
 
 export class MnistData {
     constructor() {
-		this.isDownloaded = false
-	}
+        this.isDownloaded = false
+    }
 
     async load(nTrain = 40000, nTest  = 10000) {
-		// Make a request for the MNIST sprited image.
+        // Make a request for the MNIST sprited image.
         const img = new Image()
         const canvas = document.createElement('canvas')
         const ctx = canvas.getContext('2d')
@@ -64,8 +64,8 @@ export class MnistData {
                     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height)
 
                     for (let j = 0; j < imageData.data.length / 4; j++) {
-					// All channels hold an equal value since the image is grayscale, so
-					// just read the red channel.
+                    // All channels hold an equal value since the image is grayscale, so
+                    // just read the red channel.
                         datasetBytesView[j] = imageData.data[j * 4] / 255
                     }
                 }
@@ -81,7 +81,7 @@ export class MnistData {
 
         this.datasetLabels = new Uint8Array(await labelsResponse.arrayBuffer())
 
-		// Slice the the images and labels into train and test sets.
+        // Slice the the images and labels into train and test sets.
         this.trainImages =
             this.datasetImages.slice(0, IMAGE_SIZE * nTrain)
         this.testImages = this.datasetImages.slice(IMAGE_SIZE * nTrain, IMAGE_SIZE * (nTrain+nTest))
@@ -89,9 +89,9 @@ export class MnistData {
             this.datasetLabels.slice(0, N_CLASSES * nTrain)
         this.testLabels =
             this.datasetLabels.slice(N_CLASSES * nTrain, N_CLASSES * (nTrain+nTest))
-		this.isDownloaded = true
+        this.isDownloaded = true
     }
-	
+    
 
     /**
     * Get all training data as a data tensor and a labels tensor.
