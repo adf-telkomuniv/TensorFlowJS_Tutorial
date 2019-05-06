@@ -26,17 +26,12 @@ import Chart from 'chart.js'
 const arr_x = [-1, -2,  0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 4, 5, 6]
 const arr_y = [-1, -2, -1, 1, 1, 0, 2, 3, 1, 3, 2, 4, 3, 6, 5]
 
-const x = tf.tensor2d(arr_x, [15, 1])
-const y = tf.tensor2d(arr_y, [15, 1])
-
-//VISUALISASI
 let zip = (arr1, arr2) => arr1.map((x, i) => { return {'x':x, 'y':arr2[i]}})
-
-const data_train = zip(arr_x, arr_y)
-const label_train = ['trainset']
+const toy_data = zip(arr_x, arr_y)
+const label = 'toy data'
 
 //TFJS-VIS
-let data = { values: [data_train], series: label_train }
+let data = { values: [toy_data], series: [label] }
 const container = $('#scatter-tfjs')[0]
 tfvis.render.scatterplot(container, data, { width: 500, height: 400 })
 
@@ -47,11 +42,11 @@ tfvis.render.scatterplot(surface, data)
 // CHART.JS VIS
 var ctx = $('#scatter-chartjs')
 var scatterChart = new Chart(ctx, {
-    type: 'scatter',
+    type: 'bubble',
     data: {
         datasets: [{
-            data: data_train,
-            label: label_train,
+            data : toy_data,
+            label: label,
             backgroundColor: 'blue'}]
     },
     options: {

@@ -126,10 +126,10 @@ $('#train-btn').click(async() => {
     let round = (num) => parseFloat(num*100).toFixed(2)
     $('#eval-train').text('Trainset Accuracy : '+ round(eval_train[1].dataSync())+'%')
     $('#eval-val').text( 'Validation Accuracy : '+ round(eval_val[1].dataSync())+'%')    
-    $('#predict-btn').prop('disabled', false)
+    $('#test-btn').prop('disabled', false)
 })
 
-$('#predict-btn').click(function() {
+$('#test-btn').click(function() {
     var x = parseFloat($('#input-x').val())
     var y = parseFloat($('#input-y').val())
         

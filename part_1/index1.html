@@ -19,13 +19,12 @@
     <head><link rel="stylesheet" type="text/css" href="style.css"></head>
     <body>
         <div class="container">
-            <div class="card-body">
-                <h1>
-                    Learning TensorFlow.js with AI Lab TelU 
-                    <img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png"
-                         class="navbar-ai" />
-                </h1>
-            </div>
+			<div class="card-body">
+				<div class="float-right">
+					<img src="http://icm.rg.telkomuniversity.ac.id/img/ailab_logo.png" class="navbar-ai" alt="ai-lab">
+				</div>
+				<h1>Learn and Play TensorFlow.js with AI Lab TelU </h1>
+			</div>
             
             <div class="card-body">
                 <h4>Scatter Plot Data (Chart.js)</h4>
@@ -43,7 +42,7 @@
                 <h4><span id="is-training" class="badge"/></h4>
             </div><hr>
             
-            <div class="card-body" id="predict" style="display:none;">    
+            <div class="card-body" id="predict">    
                 <h3>Test Result</h3>
                 <div class="col-5 form-group">                            
                     <label>Input Value:</label> 
@@ -51,7 +50,7 @@
                 </div>        
                 <div class="col-5 form-group">
                     <button type="button" class="btn btn-primary" 
-                        id="predict-btn">Predict</button>                
+                        id="predict-btn" disabled>Predict</button>                
                 </div>
                 <h4>Result: <span class="badge badge-success" id="output"/></h4>
             </div><hr><br><br>        
