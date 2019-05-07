@@ -30,7 +30,7 @@ let data = new MnistData()
 $('#load-data-btn').click(async() => {
     let msg = $('#loading-data')
     msg.text('Downloading MNIST data. Please wait...')
-    await data.load()
+    await data.load(40000, 10000)
     
     msg.toggleClass('badge-warning badge-success')    
     msg.text('MNIST data Loaded')
